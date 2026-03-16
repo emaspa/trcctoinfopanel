@@ -104,7 +104,7 @@ static int ConvertSingle(string path, string outputDir, bool dump)
 
     Console.WriteLine($"Converting: {theme.CanvasWidth}x{theme.CanvasHeight} theme with {theme.Elements.Count} elements");
     var (profile, items) = ThemeConverter.Convert(theme);
-    InfoPanelWriter.WriteProfile(outputDir, profile, items, theme.ThemeDirectory);
+    InfoPanelWriter.WriteProfile(outputDir, profile, items, theme.ThemeDirectory, Console.WriteLine);
     Console.WriteLine("Done!");
     return 0;
 }

@@ -9,8 +9,11 @@ namespace TrccToInfoPanel;
 /// </summary>
 public static class InfoPanelWriter
 {
-    public static void WriteProfile(string outputDir, Profile profile, List<DisplayItem> items, string? sourceThemeDir = null)
+    public static void WriteProfile(string outputDir, Profile profile, List<DisplayItem> items,
+        string? sourceThemeDir = null, Action<string>? log = null)
     {
+        log ??= _ => { };
+
         Directory.CreateDirectory(outputDir);
 
         var profilesDir = Path.Combine(outputDir, "profiles");
@@ -29,9 +32,9 @@ public static class InfoPanelWriter
         if (sourceThemeDir != null)
             CopyAssets(sourceThemeDir, assetsDir);
 
-        Console.WriteLine($"  Profile:  {Path.Combine(outputDir, "profiles.xml")}");
-        Console.WriteLine($"  Items:    {Path.Combine(profilesDir, $"{profile.Guid}.xml")}");
-        Console.WriteLine($"  Assets:   {assetsDir}");
+        log($"  Profile:  {Path.Combine(outputDir, "profiles.xml")}");
+        log($"  Items:    {Path.Combine(profilesDir, $"{profile.Guid}.xml")}");
+        log($"  Assets:   {assetsDir}");
     }
 
     private static void WriteProfilesXml(string outputDir, Profile profile)

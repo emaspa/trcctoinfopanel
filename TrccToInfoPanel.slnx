@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TrccToInfoPanel.Core/TrccToInfoPanel.Core.csproj" />
+  <Project Path="TrccToInfoPanel.Wpf/TrccToInfoPanel.Wpf.csproj" />
+  <Project Path="TrccToInfoPanel/TrccToInfoPanel.csproj" />
+</Solution>
