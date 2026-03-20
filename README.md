@@ -1,6 +1,6 @@
 # TRCC to InfoPanel Theme Converter
 
-Converts [TRCC](https://github.com/emaspa/TRCCCAP) (Thermalright) LCD theme files (`config1.dc`) to [InfoPanel](https://github.com/habibrehmansg/infopanel) profile format (XML).
+Converts TRCC (Thermalright) LCD theme files (`config1.dc`) to [InfoPanel](https://github.com/habibrehmansg/infopanel) profile format (XML).
 
 If you own a Thermalright LCD panel (like the FC140 or similar) and want to use your existing TRCC themes in InfoPanel, this tool does the conversion automatically — preserving layout, fonts, colors, sensor bindings, and background images.
 
