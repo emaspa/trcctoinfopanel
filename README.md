@@ -54,7 +54,7 @@ Font names (Chinese to English mapping), colors (ARGB), positions, bold/italic s
 4. The elements panel lists each item with its type, description, and position
 5. Adjust the output directory if needed (defaults to `%LOCALAPPDATA%\InfoPanel`)
 6. Click **Convert**
-7. Open InfoPanel — your converted profile should appear
+7. Restart InfoPanel — converted profiles will appear after restart
 
 ### Input modes
 
@@ -141,7 +141,9 @@ output/
         └── Theme.png                   # Theme preview
 ```
 
-The GUI defaults output to `%LOCALAPPDATA%\InfoPanel\` so converted profiles are immediately available in InfoPanel. The CLI defaults to `./output` — copy its contents into InfoPanel's data directory to use them.
+The GUI defaults output to `%LOCALAPPDATA%\InfoPanel\` so converted profiles are written directly to InfoPanel's data directory. The CLI defaults to `./output` — copy its contents into InfoPanel's data directory to use them.
+
+**Note:** InfoPanel must be restarted for converted profiles to appear. It only reads profiles from disk at startup.
 
 ## Supported resolutions
 
