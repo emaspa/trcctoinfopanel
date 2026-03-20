@@ -12,6 +12,16 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
     <DockPanel Margin="12">
+        <!-- Bottom: About link -->
+        <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="0,6,0,0" FontSize="11.5">
+            <Run Text="v0.1" Foreground="#999"/>
+            <Run Text=" · "/>
+            <Hyperlink NavigateUri="https://github.com/emaspa/trcctoinfopanel"
+                       RequestNavigate="Hyperlink_RequestNavigate" Foreground="#5599DD">
+                GitHub
+            </Hyperlink>
+        </TextBlock>
+
         <!-- Top: Input/Output/Actions -->
         <StackPanel DockPanel.Dock="Top" Margin="0,0,0,8">
             <!-- Input row -->

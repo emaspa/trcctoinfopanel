@@ -1,6 +1,8 @@
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using TrccToInfoPanel.Wpf.ViewModels;
@@ -56,6 +58,12 @@ public partial class MainWindow : Window
         var dlg = new OpenFolderDialog { Title = "Select a TRCC theme folder" };
         if (dlg.ShowDialog() == true && DataContext is MainViewModel vm)
             vm.InputPath = dlg.FolderName;
+    }
+
+    private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+    {
+        Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
+        e.Handled = true;
     }
 
     private void Window_DragOver(object sender, DragEventArgs e)
