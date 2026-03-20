@@ -1,5 +1,7 @@
 using System.Collections.Specialized;
+using System.IO;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using TrccToInfoPanel.Wpf.ViewModels;
 
@@ -10,6 +12,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        LoadIcon();
 
         // Auto-scroll log to bottom
         if (DataContext is MainViewModel vm)
@@ -19,6 +22,37 @@ public partial class MainWindow : Window
                 if (LogListBox.Items.Count > 0)
                     LogListBox.ScrollIntoView(LogListBox.Items[^1]);
             };
+        }
+    }
+
+    private void LoadIcon()
+    {
+        // Load icon from file next to the exe, or from the source directory
+        var exeDir = AppContext.BaseDirectory;
+        var candidates = new[]
+        {
+            Path.Combine(exeDir, "app.ico"),
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "app.ico"),
+        };
+
+        // Also check relative to source when running via dotnet run
+        var sourceIcon = Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location) ?? "", "..", "..", "..", "app.ico");
+
+        foreach (var path in candidates.Append(sourceIcon))
+        {
+            if (!File.Exists(path)) continue;
+            try
+            {
+                var bmp = new BitmapImage();
+                bmp.BeginInit();
+                bmp.UriSource = new Uri(Path.GetFullPath(path), UriKind.Absolute);
+                bmp.CacheOption = BitmapCacheOption.OnLoad;
+                bmp.EndInit();
+                bmp.Freeze();
+                Icon = bmp;
+                return;
+            }
+            catch { /* try next */ }
         }
     }
 
