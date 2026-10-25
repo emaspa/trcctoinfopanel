@@ -185,4 +185,4 @@ TrccToInfoPanel.sln
 
 ## License
 
-MIT
+MIT, see [LICENSE](LICENSE).
